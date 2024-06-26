@@ -6,6 +6,7 @@ public record CityOmbd(
         String name,
         String lat,
         String lon,
+        String country,
         Map<String, String> local_names
 ) {
 }

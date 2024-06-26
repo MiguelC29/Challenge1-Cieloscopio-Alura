@@ -16,11 +16,11 @@ public class Main {
                 \nChallenge Cieloscopio
                 --------------------------------------------------------
                 Elige una ciudad para obtener los datos meteorológicos:
-                1. Ciudad de México
-                2. Buenos Aires
-                3. Bogotá
-                4. Lima
-                5. Santiago
+                1. Ciudad de México - (MX)
+                2. Buenos Aires - (AR)
+                3. Bogotá - (CO)
+                4. Lima - (PE)
+                5. Santiago de Chile - (CL)
                 6. Desea consultar otra ciudad
                 7. Salir
                 --------------------------------------------------------""";
@@ -31,6 +31,7 @@ public class Main {
         do {
             System.out.println(menu);
             System.out.println("Ingrese una opción del menú");
+            //VALIDAR QUE LO QUE INGRESE SEA UN NUMERO
             option = teclado.nextInt();
             teclado.nextLine();
 
@@ -55,7 +56,7 @@ public class Main {
                     validOption = true;
                     break;
                 case 5:
-                    cityName = "Santiago";
+                    cityName = "Santiago de Chile";
                     validOption = true;
                     break;
                 case 6:
@@ -83,7 +84,7 @@ public class Main {
                     WeatherOmbd weatherOmbd = apiConsult.getCityByCoords(myCity.getLatitude(), myCity.getLongitude());
                     Weather weather = new Weather(weatherOmbd);
 
-                    showResults(myCity.getName(), weather);
+                    showResults(myCity, weather);
                 } else {
                     System.out.println("No se pudo obtener la información de la ciudad.");
                 }
@@ -92,10 +93,10 @@ public class Main {
         } while (option != 7);
     }
 
-    public static void showResults(String cityName, Weather weather) {
+    public static void showResults(City city, Weather weather) {
         System.out.println("---------------------------------------------------------");
         System.out.println("Respuesta:");
-        System.out.println("Ciudad: " + cityName);
+        System.out.printf("Ciudad: %s - (%s) %n", city.getName(), city.getCountry());
         System.out.println("Fecha: " + LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         System.out.println("Horario: " + LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")) + "\n");
 

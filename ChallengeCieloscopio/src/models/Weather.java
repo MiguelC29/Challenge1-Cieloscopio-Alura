@@ -14,10 +14,10 @@ public class Weather {
     }
 
     public void showWeatherData() {
-        System.out.println("Temperatura actual: " + currentTemperature);
+        System.out.println("Temperatura actual: " + currentTemperature + "°C");
         System.out.println("Condición Climática: " + weatherCondition);
         System.out.println("");
-        System.out.println("Temperatura mínima: " + minTemperature);
-        System.out.println("Temperatura máxima: " + maxTemperature);
+        System.out.println("Temperatura mínima: " + minTemperature + "°C");
+        System.out.println("Temperatura máxima: " + maxTemperature + "°C");
     }
 }
