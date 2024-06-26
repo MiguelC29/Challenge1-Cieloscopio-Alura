@@ -2,31 +2,25 @@ package models;
 
 public class City {
     private String name;
-    private double latitude;
-    private double longitude;
+    private String latitude;
+    private String longitude;
 
     public City(CityOmbd cityOmbd) {
-        this.name = cityOmbd.local_names().getOrDefault("es", cityOmbd.name()); // Obtener el nombre en español si existe, de lo contrario usar el nombre original
-        this.latitude = Double.parseDouble(cityOmbd.lat());
-        this.longitude = Double.parseDouble(cityOmbd.lon());
+        this.name = (cityOmbd.local_names() != null) ? cityOmbd.local_names().get("es") : cityOmbd.name(); // Obtener el nombre en español si existe, de lo contrario usar el nombre original
+        this.latitude = cityOmbd.lat();
+        this.longitude = cityOmbd.lon();
     }
 
     public String getName() {
         return name;
     }
 
-    public double getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public double getLongitude() {
+    public String getLongitude() {
         return longitude;
-    }
-
-    public void showData() {
-        System.out.println("Ciudad: " + name);
-        System.out.println("Longitud: " + longitude);
-        System.out.println("Latitud: " + latitude);
     }
 
     @Override
