@@ -26,8 +26,7 @@ public class Weather {
 
     public void showWeatherData() {
         System.out.println("Temperatura actual: " + currentTemperature + "°C");
-        System.out.println("Condición Climática: " + weatherCondition);
-        System.out.println();
+        System.out.println("Condición climática: " + weatherCondition.toUpperCase().charAt(0) + weatherCondition.substring(1) + "\n");
         System.out.println("Temperatura mínima: " + minTemperature + "°C");
         System.out.println("Temperatura máxima: " + maxTemperature + "°C");
         System.out.println("Precipitación: " + precipitation);

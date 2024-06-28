@@ -28,7 +28,7 @@ public class Main {
                 continue;
             }
 
-            if (option == 7) {
+            if (option == 0) {
                 System.out.println("Saliendo del programa, Gracias por usar el CielosCopio!🧡");
                 input.close();
                 break;
@@ -57,13 +57,19 @@ public class Main {
                 \n
                 +-----------------------Cieloscopio-----------------------+
                 | Elige una ciudad para obtener los datos meteorológicos: |
-                | 1. Ciudad de México - (MX)                              |
-                | 2. Buenos Aires - (AR)                                  |
-                | 3. Bogotá - (CO)                                        |
-                | 4. Lima - (PE)                                          |
-                | 5. Santiago de Chile - (CL)                             |
-                | 6. Desea consultar otra ciudad                          |
-                | 7. Salir                                                |
+                |  1. Ciudad de México - (MX)                              |
+                |  2. Buenos Aires - (AR)                                  |
+                |  3. Bogotá - (CO)                                        |
+                |  4. Lima - (PE)                                          |
+                |  5. Santiago de Chile - (CL)                             |
+                |  6. Quito - (EC)                                         |
+                |  7. Asunción - (PY)                                      |
+                |  8. Montevideo - (UY)                                    |
+                |  9. Caracas - (VE)                                       |
+                | 10. Panamá - (PA)                                       |
+                | 11. Sucre - (BO)                                       |
+                | 12. Desea consultar otra ciudad                          |
+                |  0. Salir                                                |
                 +---------------------------------------------------------+""");
     }
 
@@ -92,7 +98,13 @@ public class Main {
             case 3 -> "Bogotá";
             case 4 -> "Lima";
             case 5 -> "Santiago de Chile";
-            case 6 -> {
+            case 6 -> "Quito";
+            case 7 -> "Asunción";
+            case 8 -> "Montevideo";
+            case 9 -> "Caracas";
+            case 10 -> "Panamá";
+            case 11 -> "Sucre";
+            case 12 -> {
                 System.out.println("Escriba el nombre de una ciudad: ");
                 yield input.nextLine();
             }
