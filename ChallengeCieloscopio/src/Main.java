@@ -11,8 +11,13 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
+    private static final Scanner input = new Scanner(System.in);
+    private static final String[] cities = {
+            "Ciudad de México", "Buenos Aires", "Bogotá", "Lima", "Santiago de Chile",
+            "Quito", "Asunción", "Montevideo", "Caracas", "Panamá", "Sucre"
+    };
+
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
         int option;
         System.out.print("Challenge Cieloscopio \nBienvenido al CielosCopio");
 
@@ -21,25 +26,29 @@ public class Main {
             try {
                 System.out.println("Ingrese una opción del menú");
                 option = input.nextInt();
-                input.nextLine();
+                input.nextLine(); // Limpiar el buffer del scanner
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Por favor, introduce un número entero.");
                 input.next(); // Limpiar el buffer del scanner.
-                continue;
+                continue; // Volver al inicio del bucle
             }
 
+            // Salir del programa si la opción es 0
             if (option == 0) {
                 System.out.println("Saliendo del programa, Gracias por usar el CielosCopio!🧡");
                 input.close();
                 break;
             }
 
-            String cityName = getCityName(option, input);
+            // Obtener el nombre de la ciudad según la opción seleccionada
+            String cityName = getCityName(option);
 
+            // Realizar la consulta si se obtuvo un nombre de ciudad válido
             if (!cityName.isEmpty()) makeQuery(cityName);
         }
     }
 
+    // Método para mostrar los resultados del clima
     public static void showResults(City city, Weather weather) {
         System.out.printf("""
                 +------------------------Respuesta-----------------------+
@@ -52,6 +61,7 @@ public class Main {
         System.out.print("+--------------------------------------------------------+");
     }
 
+    // Método para mostrar el menú de opciones
     public static void showMenu() {
         System.out.println("""
                 \n
@@ -73,25 +83,8 @@ public class Main {
                 +---------------------------------------------------------+""");
     }
 
-    public static String getCityName(int option, Scanner input) {
-        /*switch (option) {
-            case 1:
-                return "Ciudad de México";
-            case 2:
-                return "Buenos Aires";
-            case 3:
-                return "Bogotá";
-            case 4:
-                return "Lima";
-            case 5:
-                return "Santiago de Chile";
-            case 6:
-                System.out.println("Escriba el nombre de una ciudad: ");
-                return input.nextLine();
-            default:
-                System.out.println("Opción incorrecta, por favor ingrese una opción válida");
-                return "";
-        }*/
+    // Método para obtener el nombre de la ciudad según la opción seleccionada
+    public static String getCityName(int option) {
         return switch (option) {
             case 1 -> "Ciudad de México";
             case 2 -> "Buenos Aires";
@@ -115,18 +108,23 @@ public class Main {
         };
     }
 
+    // Método para realizar la consulta a la API y mostrar los resultados
     public static void makeQuery(String cityName) {
         try {
             APIConsult apiConsult = new APIConsult();
 
+            // Obtener información de la ciudad por nombre
             CityOmbd cityOmbd = apiConsult.getCityByName(cityName);
             City myCity = new City(cityOmbd);
 
+            // Obtener el clima de la ciudad utilizando las coordenadas de la ciudad
             WeatherOmbd weatherOmbd = apiConsult.getCityByCoords(myCity.getLatitude(), myCity.getLongitude());
             Weather weather = new Weather(weatherOmbd);
 
+            // Mostrar los resultados
             showResults(myCity, weather);
         } catch (RuntimeException e) {
+            // Manejar errores y mostrar mensaje
             System.out.println(e.getMessage());
         }
     }

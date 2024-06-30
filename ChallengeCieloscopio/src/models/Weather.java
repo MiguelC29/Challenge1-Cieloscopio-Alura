@@ -13,6 +13,7 @@ public class Weather {
         this.maxTemperature = weatherOmbd.main().get("temp_max");
         this.minTemperature = weatherOmbd.main().get("temp_min");
 
+        // Si no existe la clave rain, mandamos un mensaje por defecto, de lo contrario obtenemos el valor
         if (weatherOmbd.rain() == null) {
             this.precipitation = "Valor no informado";
         } else {
