@@ -12,16 +12,17 @@ import java.util.Scanner;
 
 public class Main {
     private static final Scanner input = new Scanner(System.in);
+    // LISTA DE CIUDADES POR DEFECTO
     private static final String[] cities = {
             "Ciudad de México", "Buenos Aires", "Bogotá", "Lima", "Santiago de Chile",
             "Quito", "Asunción", "Montevideo", "Caracas", "Panamá", "Sucre"
     };
 
     public static void main(String[] args) {
-        int option;
         System.out.print("Challenge Cieloscopio \nBienvenido al CielosCopio");
 
         while (true) {
+            int option;
             showMenu();
             try {
                 System.out.println("Ingrese una opción del menú");
@@ -85,27 +86,17 @@ public class Main {
 
     // Método para obtener el nombre de la ciudad según la opción seleccionada
     public static String getCityName(int option) {
-        return switch (option) {
-            case 1 -> "Ciudad de México";
-            case 2 -> "Buenos Aires";
-            case 3 -> "Bogotá";
-            case 4 -> "Lima";
-            case 5 -> "Santiago de Chile";
-            case 6 -> "Quito";
-            case 7 -> "Asunción";
-            case 8 -> "Montevideo";
-            case 9 -> "Caracas";
-            case 10 -> "Panamá";
-            case 11 -> "Sucre";
-            case 12 -> {
-                System.out.println("Escriba el nombre de una ciudad: ");
-                yield input.nextLine();
-            }
-            default -> {
-                System.out.println("Opción incorrecta, por favor ingrese una opción válida");
-                yield "";
-            }
-        };
+        // Verifica si la opción está en el rango de las opciones predefinidas (1 a 11)
+        if (option >= 1 && option <= 11) {
+            return cities[option -1]; // Retorna el nombre de la ciudad correspondiente a la opción seleccionada
+        } else if (option == 12) {     // Si la opción es 12, se pide al usuario que ingrese el nombre de una ciudad
+            System.out.println("Escriba el nombre de una ciudad: ");
+            return input.nextLine(); // Lee y retorna el nombre de la ciudad ingresada por el usuario
+        } else {     // Si la opción no es válida (fuera del rango 0-12)
+            System.out.println("Opción incorrecta, por favor ingrese una opción válida");
+            // Retorna una cadena vacía indicando que la opción no es válida
+            return "";
+        }
     }
 
     // Método para realizar la consulta a la API y mostrar los resultados
