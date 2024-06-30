@@ -21,8 +21,9 @@ public class APIConsult {
     private static final HttpClient client = HttpClient.newHttpClient();
 
     public CityOmbd getCityByName(String cityName) {
-        URI url = URI.create("http://api.openweathermap.org/geo/1.0/direct?appid=24b427e1bdc32c4d61cd3eb9256359e8&limit=1&q=" +
-                URLEncoder.encode(cityName, StandardCharsets.UTF_8));
+        URI url = URI.create("http://api.openweathermap.org/geo/1.0/direct?appid=" +
+                System.getenv("WEATHER_API_KEY") +
+                "&limit=1&q=" + URLEncoder.encode(cityName, StandardCharsets.UTF_8));
 
         var request = createRequest(url);
 
@@ -44,8 +45,9 @@ public class APIConsult {
     }
 
     public WeatherOmbd getCityByCoords(String lat, String lon) {
-        URI url = URI.create("https://api.openweathermap.org/data/2.5/weather?appid=24b427e1bdc32c4d61cd3eb9256359e8&lang=es&units=metric&" +
-                "lat=" + lat + "&lon=" + lon);
+        URI url = URI.create("https://api.openweathermap.org/data/2.5/weather?appid=" +
+                System.getenv("WEATHER_API_KEY") +
+                "&lang=es&units=metric&lat=" + lat + "&lon=" + lon);
         var request = createRequest(url);
 
         try {
