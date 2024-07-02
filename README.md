@@ -8,22 +8,20 @@ El siguiente proyecto corresponde al primer desafío del Bootcamp de Back-end co
 - `Funcionalidad 1`: puede consultar el clima de una lista de ciudades preestablecida
 - `Funcionalidad 2`: puede consultar el clima de una ciudad de tu preferencia ingresandola por medio del teclado
 
-## 📁 Acceso al proyecto
+## 📁 Acceso y ejecución del proyecto
 - Si tiene instalado git solo es darle click al botón code, luego copiar la url y por último ir a la carpeta donde desea que se descargue el proyecto abrir un cmd o git bash e ingresar el siguiente comando ``git clone URL_PROYECTO``.
 - Si por el contrario no tiene instalado git, puede descargarlo como archivo ZIP <br/>
   <img src="https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura/assets/119911328/5fa0c407-faba-4f3d-ac90-2553c781e732" width="600" />
-
-## 🛠️ Abre y ejecuta el proyecto
-- En su IDE de preferencia que puede ser Intellij IDEA, Neatbeans, Eclipse, etc, abrá el proyecto.
-- Configure la dependencia [Gson](/#descargar-la-dependencia-de-gson)
-- Configure la API KEY, primero si aún no la tiene [genere la API kEY](/#generar-api-key)
+- Una vez realizada toda la [configuración](#configuración), solo es acceder a la carpeta src y el archivo 'Main' y darle al botón play que aparece en la parte superior
+O desde el archivo Main, dar click derecho y a la opción Run 'Main.main()'
+![img_4.png](img_4.png)
 
 ## Configuración
 ### Descargar la dependencia de Gson
 - Debe descargar la dependencia de [Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson) en mi caso use la ``versión 2.11.0``
   * Para ello puede ingresar al siguiente [enlace](https://mvnrepository.com/artifact/com.google.code.gson/gson/2.11.0) y seleccionar JAR <br />
     <img src="https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura/assets/119911328/cb58d3bf-17ad-4e69-97f8-05335707a730" width="400"/>
-#### Importar la dependencia de Gson
+### Importar la dependencia de Gson
 - Debe ingresar a 'file' (Archivo) y 'project structure' (Estructura del proyecto) <br/>
   <img src="https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura/assets/119911328/f6372996-06c2-4d9d-928f-4725a46c0945" width="200"/>
 - En 'Project Settings' (Configuración del proyecto), seleccionamos la opción Modules (Módulos) <br/>
@@ -42,6 +40,16 @@ El siguiente proyecto corresponde al primer desafío del Bootcamp de Back-end co
   * En la sección de Create Key, ingresamos el nombre que le queremos dar a nuestra clave y luego le damos click a botón Generate
     ![image](https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura/assets/119911328/7cf80aa2-cc00-4ee0-8d95-7444c3f54231)
   * Y listo tendremos nuestra API Key, tenga presente que la activación de la misma puede tardar hasta 24 horas
+
+### Importar API Key
+- Luego de haber descargado el proyecto, encontrara un archivo llamada .env.copy, debe renombrarlo y poner .env
+- Despues abra ese archivo y donde 'YOUR_API_KEY' reemplace por su api key
+- Por último el la barra de busqueda, en la pestaña de actions, ingrese lo siguiente 'modify run Configuration'<br/>
+![img.png](img.png) ![img_1.png](img_1.png) <br/>
+- Se le debe desplegar una ventana como la siguiente:
+![img_2.png](img_2.png) <br/>
+- Solo es donde dice 'Enviromental variables' agregar la ruta del archivo .env configurado en el anterior paso, darle apply y luego ok y listo
+![img_3.png](img_3.png)
 
 ## Requisitos
 - ``Java 11`` o superior
