@@ -33,42 +33,6 @@ public class Weather {
         }
     }
 
-    public String getCurrentTemperature() {
-        return currentTemperature;
-    }
-
-    public String getWeatherCondition() {
-        return weatherCondition;
-    }
-
-    public String getMaxTemperature() {
-        return maxTemperature;
-    }
-
-    public String getMinTemperature() {
-        return minTemperature;
-    }
-
-    public String getHumidity() {
-        return humidity;
-    }
-
-    public String getThermalSensation() {
-        return thermalSensation;
-    }
-
-    public String getAtmosphericPressure() {
-        return atmosphericPressure;
-    }
-
-    public String getWind() {
-        return wind;
-    }
-
-    public String getPrecipitation() {
-        return precipitation;
-    }
-
     public void showWeatherData() {
         System.out.println("Temperatura actual: " + currentTemperature + "°C");
         System.out.println("Condición climática: " + weatherCondition.toUpperCase().charAt(0) + weatherCondition.substring(1) + "\n");

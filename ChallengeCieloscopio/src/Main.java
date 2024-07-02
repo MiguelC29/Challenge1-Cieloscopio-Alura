@@ -105,11 +105,11 @@ public class Main {
             APIConsult apiConsult = new APIConsult();
 
             // Obtener información de la ciudad por nombre
-            CityOmbd cityOmbd = apiConsult.getCityByName(cityName);
+            CityOmbd cityOmbd = apiConsult.getCoordsByCityName(cityName);
             City myCity = new City(cityOmbd);
 
             // Obtener el clima de la ciudad utilizando las coordenadas de la ciudad
-            WeatherOmbd weatherOmbd = apiConsult.getCityByCoords(myCity.getLatitude(), myCity.getLongitude());
+            WeatherOmbd weatherOmbd = apiConsult.getWeatherByCoords(myCity.getLatitude(), myCity.getLongitude());
             Weather weather = new Weather(weatherOmbd);
 
             // Mostrar los resultados

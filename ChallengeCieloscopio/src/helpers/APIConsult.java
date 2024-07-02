@@ -21,11 +21,12 @@ public class APIConsult {
     private final Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
     // Creamos un cliente HTTP que se utilizará para enviar solicitudes
     private static final HttpClient client = HttpClient.newHttpClient();
+    private final String BASE_URL = "http://api.openweathermap.org/";
 
     // Método para obtener información de una ciudad por su nombre
-    public CityOmbd getCityByName(String cityName) {
+    public CityOmbd getCoordsByCityName(String cityName) {
         // Construimos la URL para la solicitud HTTP utilizando el nombre de la ciudad y la clave de la API desde las variables de entorno
-        URI url = URI.create("http://api.openweathermap.org/geo/1.0/direct?appid=" +
+        URI url = URI.create(BASE_URL + "geo/1.0/direct?appid=" +
                 System.getenv("WEATHER_API_KEY") +
                 "&limit=1&q=" + URLEncoder.encode(cityName, StandardCharsets.UTF_8));
 
@@ -52,9 +53,9 @@ public class APIConsult {
     }
 
     // Método para obtener el clima de una ciudad utilizando sus coordenadas (latitud y longitud)
-    public WeatherOmbd getCityByCoords(String lat, String lon) {
+    public WeatherOmbd getWeatherByCoords(String lat, String lon) {
         // Construimos la URL para la solicitud HTTP utilizando las coordenadas y la clave de la API desde las variables de entorno
-        URI url = URI.create("https://api.openweathermap.org/data/2.5/weather?appid=" +
+        URI url = URI.create(BASE_URL + "data/2.5/weather?appid=" +
                 System.getenv("WEATHER_API_KEY") +
                 "&lang=es&units=metric&lat=" + lat + "&lon=" + lon);
 
@@ -68,7 +69,7 @@ public class APIConsult {
             return gson.fromJson(response.body(), WeatherOmbd.class);
         } catch (Exception e) {
             // Lanzamos una excepción si ocurre algún error durante la solicitud o deserialización
-            throw new RuntimeException("No se encontro la ciudad especificada ");
+            throw new RuntimeException("No se encontraron los datos del clima de la ciudad especificada ");
         }
     }
 
