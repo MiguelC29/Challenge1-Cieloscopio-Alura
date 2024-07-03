@@ -8,13 +8,23 @@ El siguiente proyecto corresponde al primer desafío del Bootcamp de Back-end co
 - `Funcionalidad 1`: puede consultar el clima de una lista de ciudades preestablecida
 - `Funcionalidad 2`: puede consultar el clima de una ciudad de tu preferencia ingresandola por medio del teclado
 
+## App en Funcionamiento
+- [gif]
+- [image]
+
+## Requisitos
+- ``Java 11`` o superior
+- API KEY de la API: Open Weather App
+- Biblioteca Gson ``2.10.1`` o superior
+
 ## 📁 Acceso y ejecución del proyecto
 - Si tiene instalado git solo es darle click al botón code, luego copiar la url y por último ir a la carpeta donde desea que se descargue el proyecto abrir un cmd o git bash e ingresar el siguiente comando ``git clone URL_PROYECTO``.
 - Si por el contrario no tiene instalado git, puede descargarlo como archivo ZIP <br/>
   <img src="https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura/assets/119911328/5fa0c407-faba-4f3d-ac90-2553c781e732" width="600" />
 - Una vez realizada toda la [configuración](#configuración), solo es acceder a la carpeta src y el archivo 'Main' y darle al botón play que aparece en la parte superior
 O desde el archivo Main, dar click derecho y a la opción Run 'Main.main()'
-![img_4.png](img_4.png)
+![image](https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura/assets/119911328/e43b7fc6-178a-4ec4-996f-f356b7bf54ca)
+
 
 ## Configuración
 ### Descargar la dependencia de Gson
@@ -45,20 +55,14 @@ O desde el archivo Main, dar click derecho y a la opción Run 'Main.main()'
 - Luego de haber descargado el proyecto, encontrara un archivo llamada .env.copy, debe renombrarlo y poner .env
 - Despues abra ese archivo y donde 'YOUR_API_KEY' reemplace por su api key
 - Por último el la barra de busqueda, en la pestaña de actions, ingrese lo siguiente 'modify run Configuration'<br/>
-![img.png](img.png) ![img_1.png](img_1.png) <br/>
-- Se le debe desplegar una ventana como la siguiente:
-![img_2.png](img_2.png) <br/>
-- Solo es donde dice 'Enviromental variables' agregar la ruta del archivo .env configurado en el anterior paso, darle apply y luego ok y listo
-![img_3.png](img_3.png)
-
-## Requisitos
-- ``Java 11`` o superior
-- API KEY de la API: Open Weather App
-- Biblioteca Gson ``2.10.1`` o superior
-
-## App en Funcionamiento
-- [gif]
-- [image]
+![img](https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura/assets/119911328/4f8ae648-d43b-4836-a82a-c18746995d76)
+ ![image](https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura/assets/119911328/925d1597-47f6-44b3-bb9c-517d5f9613d9)
+ <br/>
+- Se le debe desplegar una ventana como la siguiente: <br/>
+<img src="https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura/assets/119911328/3749ed8a-4a2c-4759-aec3-0b5744f7480f" width="400" />
+ <br/>
+- Solo es donde dice 'Enviromental variables' agregar la ruta del archivo .env configurado en el anterior paso, darle apply y luego ok y listo <br/>
+<img src="https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura/assets/119911328/749984ff-b42d-4a7e-9586-d5c692d01474" width="400" />
 
 ## 💻 Realizado por 👨‍🦱
 Miguel Angel Casallas
