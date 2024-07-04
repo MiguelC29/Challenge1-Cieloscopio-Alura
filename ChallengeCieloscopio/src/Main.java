@@ -1,8 +1,5 @@
 import helpers.APIConsult;
-import models.City;
-import models.CityOmbd;
-import models.Weather;
-import models.WeatherOmbd;
+import models.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -19,7 +16,7 @@ public class Main {
     };
 
     public static void main(String[] args) {
-        System.out.print("Challenge Cieloscopio \nBienvenido al CielosCopio");
+        System.out.println("Challenge Cieloscopio \nBienvenido al CielosCopio\n");
 
         while (true) {
             int option;
@@ -29,14 +26,14 @@ public class Main {
                 option = input.nextInt();
                 input.nextLine(); // Limpiar el buffer del scanner
             } catch (InputMismatchException e) {
-                System.out.println("Entrada inválida. Por favor, introduce un número entero.");
+                System.err.println("Entrada inválida. Por favor, introduce un número entero.");
                 input.next(); // Limpiar el buffer del scanner.
                 continue; // Volver al inicio del bucle
             }
 
             // Salir del programa si la opción es 0
             if (option == 0) {
-                System.out.println("Saliendo del programa, Gracias por usar el CielosCopio!🧡");
+                System.out.println("Saliendo del programa... ¡Gracias por usar el CielosCopio!🧡");
                 input.close();
                 break;
             }
@@ -45,7 +42,30 @@ public class Main {
             String cityName = getCityName(option);
 
             // Realizar la consulta si se obtuvo un nombre de ciudad válido
-            if (!cityName.isEmpty()) makeQuery(cityName);
+            if (!cityName.isEmpty()) makeQuery(cityName,false);
+
+            while (true) {
+                System.out.println("\n1. Mostrar predicción del clima de los proximos 3 días \n0. Volver");
+
+                try {
+                    System.out.println("Ingrese una opción del menú");
+                    int option2 = input.nextInt();
+                    input.nextLine(); // Limpiar el buffer del scanner
+
+                    if (option2 == 1){
+                        if (!cityName.isEmpty()) makeQuery(cityName,true);
+                        System.out.println();
+                        break;
+                    } else if (option2 == 0){
+                        break;
+                    } else {
+                        System.out.println("Opción incorrecta ingrese una opción del menú");
+                    }
+                } catch (InputMismatchException e) {
+                    System.err.println("Entrada inválida. Por favor, introduce un número entero.");
+                    input.next(); // Limpiar el buffer del scanner.
+                }
+            }
         }
     }
 
@@ -55,7 +75,8 @@ public class Main {
                 +------------------------Respuesta-----------------------+
                 Ciudad: %s - (%s)
                 Fecha: %s
-                Horario: %s %n
+                Horario: %s
+                +--------------------------------------------------------+
                 """, city.getName(), city.getCountry(), LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                 LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
         weather.showWeatherData();
@@ -65,9 +86,8 @@ public class Main {
     // Método para mostrar el menú de opciones
     public static void showMenu() {
         System.out.println("""
-                \n
-                +-----------------------Cieloscopio-----------------------+
-                | Elige una ciudad para obtener los datos meteorológicos: |
+                +-----------------------Cieloscopio------------------------+
+                | Elige una ciudad para obtener los datos meteorológicos:  |
                 |  1. Ciudad de México - (MX)                              |
                 |  2. Buenos Aires - (AR)                                  |
                 |  3. Bogotá - (CO)                                        |
@@ -77,11 +97,11 @@ public class Main {
                 |  7. Asunción - (PY)                                      |
                 |  8. Montevideo - (UY)                                    |
                 |  9. Caracas - (VE)                                       |
-                | 10. Panamá - (PA)                                       |
-                | 11. Sucre - (BO)                                       |
+                | 10. Panamá - (PA)                                        |
+                | 11. Sucre - (BO)                                         |
                 | 12. Desea consultar otra ciudad                          |
                 |  0. Salir                                                |
-                +---------------------------------------------------------+""");
+                +----------------------------------------------------------+""");
     }
 
     // Método para obtener el nombre de la ciudad según la opción seleccionada
@@ -93,14 +113,14 @@ public class Main {
             System.out.println("Escriba el nombre de una ciudad: ");
             return input.nextLine(); // Lee y retorna el nombre de la ciudad ingresada por el usuario
         } else {     // Si la opción no es válida (fuera del rango 0-12)
-            System.out.println("Opción incorrecta, por favor ingrese una opción válida");
+            System.err.println("Opción incorrecta, por favor ingrese una opción válida");
             // Retorna una cadena vacía indicando que la opción no es válida
             return "";
         }
     }
 
     // Método para realizar la consulta a la API y mostrar los resultados
-    public static void makeQuery(String cityName) {
+    public static void makeQuery(String cityName, boolean givePrediction) {
         try {
             APIConsult apiConsult = new APIConsult();
 
@@ -112,11 +132,22 @@ public class Main {
             WeatherOmbd weatherOmbd = apiConsult.getWeatherByCoords(myCity.getLatitude(), myCity.getLongitude());
             Weather weather = new Weather(weatherOmbd);
 
-            // Mostrar los resultados
-            showResults(myCity, weather);
+            if (givePrediction) {
+                WeatherPredictionOmbd weatherPredictionOmbd = apiConsult.getWeatherPredictionsByCoords(myCity.getLatitude(), myCity.getLongitude());
+                System.out.println("+--------------------------------------------------------+");
+                for (WeatherOmbd weather1 : weatherPredictionOmbd.list()) {
+                    if (weather1.dt_txt().substring(11).equals("12:00:00")) {
+                        Weather weatherPrediction1 = new Weather(weather1);
+                        weatherPrediction1.showWeatherPredictionData();
+                    }
+                }
+            } else {
+                // Mostrar los resultados
+                showResults(myCity, weather);
+            }
         } catch (RuntimeException e) {
             // Manejar errores y mostrar mensaje
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
         }
     }
 }
