@@ -12,7 +12,7 @@ public class Main {
     // LISTA DE CIUDADES POR DEFECTO
     private static final String[] cities = {
             "Ciudad de México", "Buenos Aires", "Bogotá", "Lima", "Santiago de Chile",
-            "Quito", "Asunción", "Montevideo", "Caracas", "Panamá", "Sucre"
+            "Quito", "San Salvador", "Montevideo", "Caracas", "Panamá", "La Habana"
     };
 
     public static void main(String[] args) {
@@ -159,11 +159,11 @@ public class Main {
                 |  4. Lima - (PE)                                          |
                 |  5. Santiago de Chile - (CL)                             |
                 |  6. Quito - (EC)                                         |
-                |  7. Asunción - (PY)                                      |
+                |  7. San Salvador - (SV)                                  |
                 |  8. Montevideo - (UY)                                    |
                 |  9. Caracas - (VE)                                       |
                 | 10. Panamá - (PA)                                        |
-                | 11. Sucre - (BO)                                         |
+                | 11. La Habana - (CU)                                     |
                 | 12. Desea consultar otra ciudad                          |
                 |  0. Salir                                                |
                 ------------------------------------------------------------""");
