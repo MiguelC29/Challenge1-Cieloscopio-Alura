@@ -53,7 +53,7 @@ public class APIConsult {
         }
     }
 
-    // Método para obtener el clima de una ciudad utilizando sus coordenadas (latitud y longitud)
+    // Método para obtener el clima actual de una ciudad utilizando sus coordenadas
     public WeatherOmbd getWeatherByCoords(String lat, String lon) {
         // Construimos la URL para la solicitud HTTP utilizando las coordenadas y la clave de la API desde las variables de entorno
         URI url = URI.create(BASE_URL + "data/2.5/weather?appid=" +
@@ -66,6 +66,7 @@ public class APIConsult {
         try {
             // Enviamos la solicitud HTTP y obtenemos la respuesta
             var response = sendRequest(request);
+
             // Deserializamos la respuesta JSON en un objeto WeatherOmbd y lo retornamos
             return gson.fromJson(response.body(), WeatherOmbd.class);
         } catch (Exception e) {
@@ -74,6 +75,7 @@ public class APIConsult {
         }
     }
 
+    // Método para obtener las predicciones del clima de una ciudad utilizando sus coordenadas
     public WeatherPredictionOmbd getWeatherPredictionsByCoords(String lat, String lon) {
         // Construimos la URL para la solicitud HTTP utilizando las coordenadas y la clave de la API desde las variables de entorno
         URI url = URI.create(BASE_URL + "data/2.5/forecast?appid=" +
@@ -86,6 +88,7 @@ public class APIConsult {
         try {
             // Enviamos la solicitud HTTP y obtenemos la respuesta
             var response = sendRequest(request);
+
             return gson.fromJson(response.body(), WeatherPredictionOmbd.class);
         }  catch (Exception e) {
             // Lanzamos una excepción si ocurre algún error durante la solicitud o deserialización
@@ -93,16 +96,13 @@ public class APIConsult {
         }
     }
 
-    // Método estático para crear una solicitud HTTP
-    public static HttpRequest createRequest(URI url) {
-        return HttpRequest.newBuilder()
-                .uri(url)
-                .build();
+    // Método privado para crear una solicitud HTTP utilizando una URL dada
+    private HttpRequest createRequest(URI url) {
+        return HttpRequest.newBuilder().uri(url).build();
     }
 
-    // Método estático para enviar una solicitud HTTP y obtener la respuesta
-    public static HttpResponse<String> sendRequest(HttpRequest request) throws IOException, InterruptedException {
-        return client
-                .send(request, HttpResponse.BodyHandlers.ofString());
+    // Método privado para enviar una solicitud HTTP y obtener la respuesta
+    private HttpResponse<String> sendRequest(HttpRequest request) throws IOException, InterruptedException {
+        return client.send(request, HttpResponse.BodyHandlers.ofString());
     }
 }
