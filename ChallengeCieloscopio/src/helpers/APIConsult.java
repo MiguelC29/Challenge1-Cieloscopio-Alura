@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import models.CityOmbd;
 import models.WeatherOmbd;
+import models.WeatherPredictionOmbd;
 
 import java.io.IOException;
 import java.net.URI;
@@ -70,6 +71,25 @@ public class APIConsult {
         } catch (Exception e) {
             // Lanzamos una excepción si ocurre algún error durante la solicitud o deserialización
             throw new RuntimeException("No se encontraron los datos del clima de la ciudad especificada ");
+        }
+    }
+
+    public WeatherPredictionOmbd getWeatherPredictionsByCoords(String lat, String lon) {
+        // Construimos la URL para la solicitud HTTP utilizando las coordenadas y la clave de la API desde las variables de entorno
+        URI url = URI.create(BASE_URL + "data/2.5/forecast?appid=" +
+                System.getenv("WEATHER_API_KEY") +
+                "&lang=es&units=metric&cnt=20&lat=" + lat + "&lon=" + lon);
+
+        // Creamos la solicitud HTTP utilizando la URL generada
+        var request = createRequest(url);
+
+        try {
+            // Enviamos la solicitud HTTP y obtenemos la respuesta
+            var response = sendRequest(request);
+            return gson.fromJson(response.body(), WeatherPredictionOmbd.class);
+        }  catch (Exception e) {
+            // Lanzamos una excepción si ocurre algún error durante la solicitud o deserialización
+            throw new RuntimeException("No se encontraron los datos de la predicción del clima de la ciudad especificada " + e.getMessage());
         }
     }
 
