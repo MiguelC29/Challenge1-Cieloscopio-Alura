@@ -71,16 +71,13 @@ public class Main {
 
     // Método para mostrar los resultados del clima
     public static void showResults(City city, Weather weather) {
-        System.out.printf("""
-                +------------------------Respuesta-----------------------+
-                Ciudad: %s - (%s)
-                Fecha: %s
-                Horario: %s
-                +--------------------------------------------------------+
-                """, city.getName(), city.getCountry(), LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
-                LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
+        System.out.println("----------------------------------------------------------");
+        System.out.println("|                        Resultado                       |");
+        System.out.println("----------------------------------------------------------");
+        System.out.printf("| %-25s : (%s) - %-19s |\n", "Ciudad", city.getCountry(), city.getName());
+        System.out.printf("| %-25s : %-26s |\n", "Fecha", LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        System.out.printf("| %-25s : %-26s |\n", "Horario", LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
         weather.showWeatherData();
-        System.out.print("+--------------------------------------------------------+");
     }
 
     // Método para mostrar el menú de opciones
@@ -134,11 +131,14 @@ public class Main {
 
             if (givePrediction) {
                 WeatherPredictionOmbd weatherPredictionOmbd = apiConsult.getWeatherPredictionsByCoords(myCity.getLatitude(), myCity.getLongitude());
-                System.out.println("+--------------------------------------------------------+");
+                System.out.println("----------------------------------------------------------");
+                System.out.println("|                  Predicción del Clima                  |");
+                System.out.println("----------------------------------------------------------");
                 for (WeatherOmbd weather1 : weatherPredictionOmbd.list()) {
                     if (weather1.dt_txt().substring(11).equals("12:00:00")) {
                         Weather weatherPrediction1 = new Weather(weather1);
                         weatherPrediction1.showWeatherPredictionData();
+                        System.out.println("+--------------------------------------------------------+");
                     }
                 }
             } else {

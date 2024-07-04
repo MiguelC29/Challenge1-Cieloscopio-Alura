@@ -40,28 +40,38 @@ public class Weather {
     }
 
     public void showWeatherData() {
-        System.out.println("Temperatura actual: " + currentTemperature + "°C");
-        System.out.println("Condición climática: " + weatherCondition.toUpperCase().charAt(0) + weatherCondition.substring(1));
-        System.out.println("+--------------------------------------------------------+");
-        System.out.println("Temperatura mínima: " + minTemperature + "°C");
-        System.out.println("Temperatura máxima: " + maxTemperature + "°C");
-        System.out.println("Sensación térmica: " + thermalSensation + "°C");
-        System.out.println("+--------------------------------------------------------+");
-        System.out.println("Humedad: " + humidity + "%");
-        System.out.println("Presión atmosférica: " + atmosphericPressure + " hPa");
-        System.out.println("+--------------------------------------------------------+");
-        System.out.println("Viento: " + wind + " m/s");
-        System.out.println("Precipitación: " + precipitation);
+        System.out.println("----------------------------------------------------------");
+        System.out.println("|                  Reporte del Clima                     |");
+        System.out.println("----------------------------------------------------------");
+        System.out.printf("| %-25s : %23s °C |\n", "Temperatura actual", currentTemperature);
+        System.out.printf("| %-25s : %26s |\n", "Condición climática", capitalizeFirstLetter(weatherCondition));
+        System.out.println("----------------------------------------------------------");
+        System.out.printf("| %-25s : %23s °C |\n", "Temperatura mínima", minTemperature);
+        System.out.printf("| %-25s : %23s °C |\n", "Temperatura máxima", maxTemperature);
+        System.out.printf("| %-25s : %23s °C |\n", "Sensación térmica", thermalSensation);
+        System.out.println("----------------------------------------------------------");
+        System.out.printf("| %-25s : %23s %%  |\n", "Humedad", humidity);
+        System.out.printf("| %-25s : %22s hPa |\n", "Presión atmosférica", atmosphericPressure);
+        System.out.println("----------------------------------------------------------");
+        System.out.printf("| %-25s : %22s m/s |\n", "Viento", wind);
+        System.out.printf("| %-25s : %26s |\n", "Precipitación", precipitation);
+        System.out.println("----------------------------------------------------------");
     }
 
     public void showWeatherPredictionData() {
-        System.out.println("Fecha: " + datePrediction.substring(0, 10));
-        System.out.println("Condición climática: " + weatherCondition.toUpperCase().charAt(0) + weatherCondition.substring(1) + "\n");
+        System.out.printf("| %-25s : %26s |\n", "Fecha", datePrediction.substring(0, 10));
+        System.out.printf("| %-25s : %26s |\n", "Condición climática", capitalizeFirstLetter(weatherCondition));
+        System.out.println("----------------------------------------------------------");
+        System.out.printf("| %-25s : %23s °C |\n", "Temperatura", currentTemperature);
+        System.out.printf("| %-25s : %23s °C |\n", "Temperatura mínima", minTemperature);
+        System.out.printf("| %-25s : %23s °C |\n", "Temperatura máxima", maxTemperature);
+        System.out.printf("| %-25s : %23s °C |\n", "Sensación térmica", thermalSensation);
+    }
 
-        System.out.println("Temperatura: " + currentTemperature + "°C");
-        System.out.println("Temperatura mínima: " + minTemperature + "°C");
-        System.out.println("Temperatura máxima: " + maxTemperature + "°C");
-        System.out.println("Sensación térmica: " + thermalSensation + "°C");
-        System.out.println("+--------------------------------------------------------+");
+    private String capitalizeFirstLetter(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+        return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
     }
 }
