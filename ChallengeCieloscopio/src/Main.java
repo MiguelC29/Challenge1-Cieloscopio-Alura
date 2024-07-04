@@ -22,7 +22,7 @@ public class Main {
 
             // Salir del programa si la opción es 0
             if (option == 0) {
-                System.out.println("Saliendo del programa... ¡Gracias por usar el CielosCopio!🧡");
+                System.out.println("Saliendo del programa... ¡Gracias por usar el CielosCopio!💛");
                 input.close();
                 break;
             }

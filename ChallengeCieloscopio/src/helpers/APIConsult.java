@@ -80,7 +80,7 @@ public class APIConsult {
         // Construimos la URL para la solicitud HTTP utilizando las coordenadas y la clave de la API desde las variables de entorno
         URI url = URI.create(BASE_URL + "data/2.5/forecast?appid=" +
                 System.getenv("WEATHER_API_KEY") +
-                "&lang=es&units=metric&cnt=20&lat=" + lat + "&lon=" + lon);
+                "&lang=es&units=metric&cnt=24&lat=" + lat + "&lon=" + lon);
 
         // Creamos la solicitud HTTP utilizando la URL generada
         var request = createRequest(url);
