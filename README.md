@@ -1,4 +1,4 @@
-# Challenge1-Cieloscopio-Alura
+# ⛅ Challenge1-Cieloscopio-Alura 🌧️
 Este proyecto corresponde al primer desafío del Bootcamp de Back-end con Java de Alura Latam. Se ha desarrollado una aplicación de consola en Java llamada Cieloscopio, que consume la API del clima [**Open Weather App**](https://openweathermap.org/).
 
 ## 🔨 Funcionalidades del proyecto
@@ -9,7 +9,9 @@ Este proyecto corresponde al primer desafío del Bootcamp de Back-end con Java d
 ## 🖥️ App en Funcionamiento
   ![funcionamiento_cieloscopio](https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura/assets/119911328/a2af26d8-7256-4fdd-8c6e-d2cb790efd1a)
 - Capturas de los resultados mostrados <br/>
-  ![image](https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura/assets/119911328/6d8ddf2c-06f5-4741-9651-e3403cf0281e) ![image](https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura/assets/119911328/634d8f81-ae7b-4f54-a79b-1db67f24bca3)
+  <img src="https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura/assets/119911328/6d8ddf2c-06f5-4741-9651-e3403cf0281e" width="400" />
+  
+  <img src="https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura/assets/119911328/634d8f81-ae7b-4f54-a79b-1db67f24bca3" width="400" />
 
 
 ## 📋 Requisitos
