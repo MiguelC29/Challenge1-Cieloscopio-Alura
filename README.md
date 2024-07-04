@@ -22,7 +22,7 @@ Este proyecto corresponde al primer desafío del Bootcamp de Back-end con Java d
   git clone https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura.git
 - **Descarga como ZIP:** Si no tienes Git, puedes descargar el proyecto como archivo ZIP.
   <img src="https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura/assets/119911328/5fa0c407-faba-4f3d-ac90-2553c781e732" width="650" />
-- **Ejecución:** Una vez realizada la [configuración](%EF%B8%8F-configuración), navega a la carpeta `src` y ejecuta el archivo `Main`. Puedes hacerlo presionando el botón "Play" en tu IDE o haciendo clic derecho en `Main` y seleccionando "Run 'Main.main()'". <br/>
+- **Ejecución:** Una vez realizada la [configuración](#%EF%B8%8F-configuración), navega a la carpeta `src` y ejecuta el archivo `Main`. Puedes hacerlo presionando el botón "Play" en tu IDE o haciendo clic derecho en `Main` y seleccionando "Run 'Main.main()'". <br/>
 ![Ejecución](https://github.com/MiguelC29/Challenge1-Cieloscopio-Alura/assets/119911328/e43b7fc6-178a-4ec4-996f-f356b7bf54ca)
 
 
